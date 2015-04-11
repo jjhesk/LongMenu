@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/holder"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:src="@android:drawable/btn_radio"
+        android:scaleType="centerInside"
+        android:id="@+id/company_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_below="@id/company_logo"
+        android:id="@+id/longcontainerscoller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/longcontainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:isScrollContainer="true" />
+    </ScrollView>
+</RelativeLayout>
