@@ -38,4 +38,6 @@ Get the componenet in the code
  
 Gradle
 ===================
-Coming in a way
+```gradle
+compile  'com.hkm:uieasylongmenu:0.1.0'
+```
