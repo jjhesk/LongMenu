@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
 
         Bind b = new Bind(80, this);
         b.setItemHeight(90);
-        // b.setPattern(Bind.Pattern.LATAX);
+        b.setPattern(Bind.Pattern.GREEN);
         b.setIconPadding(0f);
         b.setWithSeparator(false);
         b.setResIdCompanyLogo(R.drawable.icoshlogo);
