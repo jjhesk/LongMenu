@@ -28,7 +28,7 @@ proguard/
 
 #idea
 .idea/*
-
+.idea
 .gradle
 /local.properties
 .DS_Store
@@ -39,4 +39,3 @@ proguard/
 *.iml
 /*.iml
 /.idea/
-
