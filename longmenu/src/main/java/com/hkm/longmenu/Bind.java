@@ -1,6 +1,9 @@
 package com.hkm.longmenu;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 
 import java.util.ArrayList;
 
@@ -26,16 +29,20 @@ public class Bind {
     }
 
     private int ResIdCompanyLogo;
-    private ArrayList<MAitem> listMenu = new ArrayList<>();
+    private ArrayList<ItemBase> listMenu = new ArrayList<>();
     private int componentWidth, item_height = 50;
     private int scaleType;
     private Context context;
     private float imagePortion = 0.75f;
     private float textPortion = 0.25f;
+    private float topLogoMargin = 50f;
     private int ResLayoutItem = UNSET;
     private int backgroundpattern = Pattern.DEFAULTPATTERN;
     private float icon_padding = UNSETF;
     private boolean withSeparator = false;
+    private Typeface font;
+    @ColorInt
+    private int text_color;
 
     public Bind(int width_dp_unit, Context context) {
         this.context = context;
@@ -117,11 +124,36 @@ public class Bind {
         listMenu.clear();
     }
 
-    public void setAddListMenu(MAitem item) {
+    public void setAddListMenu(ItemBase item) {
         listMenu.add(item);
     }
 
-    public ArrayList<MAitem> getListMenu() {
+    public ArrayList<ItemBase> getListMenu() {
         return listMenu;
+    }
+
+    public void setTopLogoMargin(float dp) {
+        topLogoMargin = dp;
+    }
+
+    public float topLogoMarginPx() {
+        return topLogoMargin;
+    }
+
+    public void setRenderTextColor(@ColorInt int color) {
+        text_color = color;
+    }
+
+    @ColorInt
+    public int getTxtColor() {
+        return text_color;
+    }
+
+    public void setFontFace(Typeface font_face) {
+        font = font_face;
+    }
+
+    public Typeface getFontFace() {
+        return font;
     }
 }

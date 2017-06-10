@@ -51,7 +51,6 @@ Support fragment transition. v4 is not yet supported.
         b.setAddListMenu(new menuitem(R.drawable.home128, "Home"));
         b.setAddListMenu(new menuitem(R.drawable.diamond28, "Settings", MenuDishes.class));
 
-
         fragment_byID.setFragmentManager(frame_id, fragment_manager);
         fragment_byID.init(b);
 
@@ -60,7 +59,7 @@ Support fragment transition. v4 is not yet supported.
 Gradle
 ===================
 ```gradle
-compile  'com.hkm.ui:uieasylongmenu:0.2.5'
+compile  'com.hkm.ui:uieasylongmenu:0.2.11'
 ```
 Overview
 ===================

@@ -1,6 +1,7 @@
 package com.hkm.longmenux;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         b.setPattern(Bind.Pattern.DEFAULTBLACK);
         b.setIconPadding(0f);
         b.setWithSeparator(false);
-        b.setResIdCompanyLogo(R.drawable.icoshlogo);
+        b.setResIdCompanyLogo(R.drawable.icon_sio);
         b.setAddListMenu(new MAitem(R.drawable.home128, "Home"));
         b.setAddListMenu(new MAitem(R.drawable.helpquestionmark128, "Help"));
         b.setAddListMenu(new MAitem(R.drawable.paperplane128, "Paper"));
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         b.setAddListMenu(new MAitem(R.drawable.gift128, "Settings"));
         b.setAddListMenu(new MAitem(R.drawable.roundbubbleheart128, "Settings"));
         b.setAddListMenu(new MAitem(R.drawable.wifi128, "Settings"));
+        b.setRenderTextColor(ContextCompat.getColor(getApplication(), R.color.whitenam));
         fragment_byID.init(b);
 
         //Fragment currentFragment = fragmentManager.findFragmentByTag("fragmentTag");

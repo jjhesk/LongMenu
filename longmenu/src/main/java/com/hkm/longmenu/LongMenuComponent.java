@@ -6,10 +6,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +64,12 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
                 textv.setText(item.getMenuDisplayName());
                 textv.setMinimumHeight(textportion);
                 textv.setMaxHeight(textportion);
-
+                if (binding.getTxtColor() != 0) {
+                    textv.setTextColor(binding.getTxtColor());
+                }
+                if (binding.getFontFace() != null) {
+                    textv.setTypeface(binding.getFontFace());
+                }
                 holder.setLayoutParams(new RelativeLayout.LayoutParams(setting.getWidth(), setting.getItem_height()));
                 holder.requestLayout();
                 onClickEvent(item, holder);
@@ -70,12 +77,16 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
                 if (i < binding.getListMenu().size() - 1 && setting.isEnabledSeparator())
                     container.addView(prepareSpaceV(10));
             }
-
+            //container.setPadding(0, 50, 0, 0);
+            int paddingDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, setting.topLogoMarginPx(), getCs().getResources().getDisplayMetrics());
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, paddingDp, 0, 0);
+            toplogo.setLayoutParams(lp);
             toplogo.setMaxWidth(setting.getWidth());
             toplogo.setMaxHeight(setting.getWidth());
             toplogo.setImageResource(setting.getResIdCompanyLogo());
+            toplogo.setBackgroundColor(Color.TRANSPARENT);
             toplogo.setAdjustViewBounds(true);
-
 
             // container.setLayoutParams(new RelativeLayout.LayoutParams(setting.getWidth(), bound.y - setting.getWidth()));
             longcontainerscoller.setLayoutParams(new RelativeLayout.LayoutParams(setting.getWidth(), bound.y - setting.getWidth()));
@@ -87,6 +98,16 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
         } else {
 
         }
+    }
+
+    private Context getCs() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getContext();
+        } else {
+            return getActivity();
+        }
+
+
     }
 
     private void onClickEvent(ItemBase item, RelativeLayout holder) {
@@ -115,7 +136,10 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
                     holder.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            fm.beginTransaction().replace(frame_layout, of(me), "CONTENT_MAIN");
+                            fm
+                                    .beginTransaction()
+                                    .replace(frame_layout, of(me), "CONTENT_MAIN")
+                                    .commitAllowingStateLoss();
                         }
                     });
                 }
