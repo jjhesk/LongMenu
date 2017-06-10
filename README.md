@@ -39,7 +39,7 @@ Get the componenet in the code
 Gradle
 ===================
 ```gradle
-compile  'com.hkm:uieasylongmenu:0.1.0'
+compile  'com.hkm.ui:longmenu:0.2.2'
 ```
 Overview
 ===================

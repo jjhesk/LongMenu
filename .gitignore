@@ -28,3 +28,15 @@ proguard/
 
 #idea
 .idea/*
+
+.gradle
+/local.properties
+.DS_Store
+/build
+**/build/**
+/captures
+**/*.iml
+*.iml
+/*.iml
+/.idea/
+

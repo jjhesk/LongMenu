@@ -2,15 +2,16 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'bintray-release'
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion project.ANDROID_BUILD_SDK_VERSION as int
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.ANDROID_BUILD_MIN_SDK_VERSION
+        targetSdkVersion project.ANDROID_BUILD_TARGET_SDK_VERSION
+        versionCode getVersionCode()
+        versionName project.VERSION_NAME
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,14 +21,14 @@ android {
 }
 
 ext {
-    PUBLISH_GROUP_ID = 'com.hkm'
+    PUBLISH_GROUP_ID = 'com.hkm.ui'
     PUBLISH_ARTIFACT_ID = 'ui-long-menu'
     PUBLISH_VERSION = project.VERSION_NAME
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile libden.appCompat
 }
 
 apply from: 'bintrayrelease.gradle'
