@@ -35,11 +35,32 @@ Get the componenet in the code
         fragment_byID.init(b);
         
  ```
- 
+
+
+Support fragment transition. v4 is not yet supported.
+
+```java
+   LongMenuComponent fragment_byID = (LongMenuComponent) getFragmentManager().findFragmentById(R.id.menu);
+
+        Bind b = new Bind(80, this);
+        b.setItemHeight(90);
+
+        b.setIconPadding(0f);
+        b.setWithSeparator(false);
+        b.setResIdCompanyLogo(R.drawable.icoshlogo);
+        b.setAddListMenu(new menuitem(R.drawable.home128, "Home"));
+        b.setAddListMenu(new menuitem(R.drawable.diamond28, "Settings", MenuDishes.class));
+
+
+        fragment_byID.setFragmentManager(frame_id, fragment_manager);
+        fragment_byID.init(b);
+
+ ```
+
 Gradle
 ===================
 ```gradle
-compile  'com.hkm.ui:longmenu:0.2.2'
+compile  'com.hkm.ui:uieasylongmenu:0.2.5'
 ```
 Overview
 ===================

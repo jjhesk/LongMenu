@@ -1,11 +1,13 @@
 package com.hkm.longmenu;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +29,8 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
     private ImageView toplogo;
     private Point bound;
     private ScrollView longcontainerscoller;
+    private FragmentManager fm;
+    private int frame_layout;
 
     @SuppressLint("WrongViewCast")
     public void init(final Bind setting) {
@@ -38,7 +42,7 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
         int textportion = (int) (setting.getItem_height() * setting.getPortions()[1]);
         if (binding != null && container != null) {
             for (int i = 0; i < binding.getListMenu().size(); i++) {
-                final menuitem item = binding.getListMenu().get(i);
+                final ItemBase item = binding.getListMenu().get(i);
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 RelativeLayout holder;
                 if (setting.getResLayoutItem() > Bind.UNSET) {
@@ -61,18 +65,7 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
 
                 holder.setLayoutParams(new RelativeLayout.LayoutParams(setting.getWidth(), setting.getItem_height()));
                 holder.requestLayout();
-                if (item.getClassIntent() != null) {
-                    holder.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent f = new Intent(getActivity(), item.getClassIntent());
-                            if (item.getTheExtraData() != null) {
-                                f.putExtras(item.getTheExtraData());
-                            }
-                            getActivity().startActivity(f);
-                        }
-                    });
-                }
+                onClickEvent(item, holder);
                 container.addView(holder);
                 if (i < binding.getListMenu().size() - 1 && setting.isEnabledSeparator())
                     container.addView(prepareSpaceV(10));
@@ -94,6 +87,53 @@ public class LongMenuComponent<Text extends TextView> extends Fragment {
         } else {
 
         }
+    }
+
+    private void onClickEvent(ItemBase item, RelativeLayout holder) {
+        if (item instanceof MAitem) {
+            final MAitem me = (MAitem) item;
+            if (me.getClassIntent() != null) {
+                holder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent f = new Intent(getActivity(), me.getClassIntent());
+                        if (me.getTheExtraData() != null) {
+                            f.putExtras(me.getTheExtraData());
+                        }
+                        getActivity().startActivity(f);
+                    }
+                });
+            }
+        } else if (item instanceof MFitem) {
+            final MFitem me = (MFitem) item;
+            if (me.getClassIntent() != null) {
+                if (fm == null) {
+                    /**
+                     * error that not fm is setup in here
+                     */
+                } else {
+                    holder.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            fm.beginTransaction().replace(frame_layout, of(me), "CONTENT_MAIN");
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    private Fragment of(MFitem me) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return Fragment.instantiate(getContext(), me.getClassIntent().getName(), me.getTheExtraData());
+        } else {
+            return Fragment.instantiate(getActivity().getApplication(), me.getClassIntent().getName(), me.getTheExtraData());
+        }
+    }
+
+    public void setFragmentManager(int target_framelayout_id, FragmentManager mManager) {
+        frame_layout = target_framelayout_id;
+        fm = mManager;
     }
 
     @Override

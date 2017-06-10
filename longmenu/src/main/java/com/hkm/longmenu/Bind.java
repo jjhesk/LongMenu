@@ -26,7 +26,7 @@ public class Bind {
     }
 
     private int ResIdCompanyLogo;
-    private ArrayList<menuitem> listMenu = new ArrayList<>();
+    private ArrayList<MAitem> listMenu = new ArrayList<>();
     private int componentWidth, item_height = 50;
     private int scaleType;
     private Context context;
@@ -117,11 +117,11 @@ public class Bind {
         listMenu.clear();
     }
 
-    public void setAddListMenu(menuitem item) {
+    public void setAddListMenu(MAitem item) {
         listMenu.add(item);
     }
 
-    public ArrayList<menuitem> getListMenu() {
+    public ArrayList<MAitem> getListMenu() {
         return listMenu;
     }
 }

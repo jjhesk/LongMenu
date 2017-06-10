@@ -1,16 +1,15 @@
 package com.hkm.longmenux;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hkm.longmenu.Bind;
 import com.hkm.longmenu.LongMenuComponent;
-import com.hkm.longmenu.menuitem;
+import com.hkm.longmenu.MAitem;
 
-
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,25 +19,25 @@ public class MainActivity extends ActionBarActivity {
 
         Bind b = new Bind(80, this);
         b.setItemHeight(90);
-        b.setPattern(Bind.Pattern.GREEN);
+        b.setPattern(Bind.Pattern.DEFAULTBLACK);
         b.setIconPadding(0f);
         b.setWithSeparator(false);
         b.setResIdCompanyLogo(R.drawable.icoshlogo);
-        b.setAddListMenu(new menuitem(R.drawable.home128, "Home"));
-        b.setAddListMenu(new menuitem(R.drawable.helpquestionmark128, "Help"));
-        b.setAddListMenu(new menuitem(R.drawable.paperplane128, "Paper"));
-        b.setAddListMenu(new menuitem(R.drawable.settings128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.gift128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.roundbubbleheart128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.wifi128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.user128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.diamond28, "Settings", MenuDishes.class));
-        b.setAddListMenu(new menuitem(R.drawable.controllerconsole128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.paperplane128, "Paper"));
-        b.setAddListMenu(new menuitem(R.drawable.settings128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.gift128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.roundbubbleheart128, "Settings"));
-        b.setAddListMenu(new menuitem(R.drawable.wifi128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.home128, "Home"));
+        b.setAddListMenu(new MAitem(R.drawable.helpquestionmark128, "Help"));
+        b.setAddListMenu(new MAitem(R.drawable.paperplane128, "Paper"));
+        b.setAddListMenu(new MAitem(R.drawable.settings128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.gift128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.roundbubbleheart128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.wifi128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.user128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.diamond28, "Settings", MenuDishes.class));
+        b.setAddListMenu(new MAitem(R.drawable.controllerconsole128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.paperplane128, "Paper"));
+        b.setAddListMenu(new MAitem(R.drawable.settings128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.gift128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.roundbubbleheart128, "Settings"));
+        b.setAddListMenu(new MAitem(R.drawable.wifi128, "Settings"));
         fragment_byID.init(b);
 
         //Fragment currentFragment = fragmentManager.findFragmentByTag("fragmentTag");
