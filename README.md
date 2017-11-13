@@ -64,3 +64,7 @@ compile  'com.hkm.ui:uieasylongmenu:0.2.11'
 Overview
 ===================
 ![image](screen/device-2015-04-11-175843.png)![image](screen/device-2015-04-11-180023.png)
+
+
+### Thank you for your support and we will bring more amazing libraries to your productive works. We are accepting bitcoin by the address as below. Please scan the QR code to start
+![wallet](http://s32.postimg.org/sdd1oio1t/qrwallet.jpg)
